@@ -3,7 +3,7 @@
 #############
 
 # Doorbell pin
-DOORBELL_PIN = 26
+DOORBELL_PIN = 13
 # Number of seconds to keep the call active
 DOORBELL_SCREEN_ACTIVE_S = 60
 # ID of the JITSI meeting room
@@ -15,13 +15,13 @@ RING_SFX_PATH = None  # If None, no sound effect plays
 # Enables email notifications
 ENABLE_EMAIL = False
 # Email you want to send the notification from (only works with gmail)
-FROM_EMAIL = 'sender@gmail.com'
+FROM_EMAIL = 'asctester99@gmail.com'
 # You can generate an app password here to avoid storing your password in plain text
 # this should also come from an environment variable
 # https://support.google.com/accounts/answer/185833?hl=en
-FROM_EMAIL_PASSWORD = 'password'
+FROM_EMAIL_PASSWORD = 'spgockkasjtbfedc'
 # Email you want to send the update to
-TO_EMAIL = 'receiver@gmail.com'
+TO_EMAIL = 'steve@arlingtonscale.com'
 
 
 #############
