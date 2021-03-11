@@ -3,7 +3,7 @@
 #############
 
 # Doorbell pin
-DOORBELL_PIN = 13
+DOORBELL_PIN = 33
 # Number of seconds to keep the call active
 DOORBELL_SCREEN_ACTIVE_S = 60
 # ID of the JITSI meeting room
