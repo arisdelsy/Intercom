@@ -13,7 +13,7 @@ JITSI_ID = None  # If None, the program generates a random UUID
 RING_SFX_PATH = None  # If None, no sound effect plays
 # RING_SFX_PATH = "/home/pi/ring.wav"
 # Enables email notifications
-ENABLE_EMAIL = False
+ENABLE_EMAIL = True
 # Email you want to send the notification from (only works with gmail)
 FROM_EMAIL = 'asctester99@gmail.com'
 # You can generate an app password here to avoid storing your password in plain text
@@ -39,11 +39,13 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
 
-try:
-    import RPi.GPIO as GPIO
-except RuntimeError:
-    print("Error importing RPi.GPIO. This is probably because you need superuser. Try running again with 'sudo'.")
+#try:
+import RPi.GPIO as GPIO
+#except RuntimeError:
+ #   print("Error importing RPi.GPIO. This is probably because you need superuser. Try running again with 'sudo'.")
 
+#GPIO.setmode(GPIO.BOARD)
+#GPIO.setup(DOORBELL_PIN, GPIO.OUT)
 
 def show_screen():
     os.system("tvservice -p")
@@ -80,6 +82,7 @@ def ring_doorbell(pin):
     video_chat.end()
 
     hide_screen()
+    GPIO.cleanup()
 
 
 class SoundEffect:
@@ -152,6 +155,7 @@ class Doorbell:
             hide_screen()
             self._setup_gpio()
             print("Waiting for doorbell rings...")
+
             self._wait_forever()
 
         except KeyboardInterrupt:
@@ -165,7 +169,8 @@ class Doorbell:
             time.sleep(0.1)
 
     def _setup_gpio(self):
-        GPIO.setmode(GPIO.BCM)
+        #GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self._doorbell_button_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.add_event_detect(self._doorbell_button_pin, GPIO.RISING, callback=ring_doorbell, bouncetime=2000)
 
