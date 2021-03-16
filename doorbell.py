@@ -34,6 +34,7 @@ import signal
 import subprocess
 import smtplib
 import uuid
+import json
 
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
@@ -105,6 +106,7 @@ class VideoChat:
     def start(self):
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
+
         else:
             print("Can't start video chat -- already started or missing chat id")
 
