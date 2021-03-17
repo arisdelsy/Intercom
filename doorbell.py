@@ -36,9 +36,12 @@ import subprocess
 import smtplib
 import uuid
 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
+
 
 
 
@@ -110,6 +113,18 @@ class VideoChat:
     def start(self):
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
+            #need path
+            PATH = "/Library/ChromeDriver "
+            driver = webdriver.Chrome(PATH)
+
+            driver.get('http://meet.jit.si/%s')
+            
+            search = driver.find_element_by_CSS("action-btn primary")
+            search.click()
+
+            driver.quit()
+  
+
         else:
             print("Can't start video chat -- already started or missing chat id")
 
@@ -121,7 +136,7 @@ class VideoChat:
 class EmailSender:
     def __init__(self, email, password):
         self.email = email
-        self.password = password
+        self.password = password 
 
 
 class Email:
