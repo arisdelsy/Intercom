@@ -2,6 +2,7 @@
 # User Parameters
 #############
 
+
 # Doorbell pin
 DOORBELL_PIN = 33
 # Number of seconds to keep the call active
@@ -39,6 +40,8 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
 
+
+
 #try:
 import RPi.GPIO as GPIO
 #except RuntimeError:
@@ -55,7 +58,9 @@ def show_screen():
 def hide_screen():
     os.system("tvservice -o")
 
-
+'''
+function takes in char_url and sends notification if email is enabled
+'''
 def send_email_notification(chat_url):
     if ENABLE_EMAIL:
         sender = EmailSender(FROM_EMAIL, FROM_EMAIL_PASSWORD)
@@ -143,6 +148,7 @@ class Email:
         smtp.login(self.sender.email, self.sender.password)
         smtp.sendmail(self.sender.email, to_email, msgRoot.as_string())
         smtp.quit()
+        print('Email Sent')
 
 
 class Doorbell:
@@ -182,3 +188,5 @@ class Doorbell:
 if __name__ == "__main__":
     doorbell = Doorbell(DOORBELL_PIN)
     doorbell.run()
+    
+    
