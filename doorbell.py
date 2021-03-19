@@ -36,10 +36,11 @@ import signal
 import subprocess
 import smtplib
 import uuid
-import selenium
+#import selenium
 
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.common.keys import Keys
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
