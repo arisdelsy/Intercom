@@ -19,7 +19,8 @@ FROM_EMAIL = 'asctester99@gmail.com'
 # You can generate an app password here to avoid storing your password in plain text
 # this should also come from an environment variable
 # https://support.google.com/accounts/answer/185833?hl=en
-FROM_EMAIL_PASSWORD = 'spgockkasjtbfedc'
+#FROM_EMAIL_PASSWORD = 'spgockkasjtbfedc'
+FROM_EMAIL_PASSWORD = '#Asc1058'
 # Email you want to send the update to
 TO_EMAIL = 'steve@arlingtonscale.com'
 
@@ -34,7 +35,6 @@ import signal
 import subprocess
 import smtplib
 import uuid
-import json
 
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
