@@ -115,8 +115,7 @@ class VideoChat:
     def start(self):
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
-<<<<<<< HEAD
-            
+
             PATH = "/Library/ChromeDriver "
             driver = webdriver.Chrome(PATH)
 
@@ -126,10 +125,6 @@ class VideoChat:
             search.click()
 
             driver.quit()
-  
-=======
->>>>>>> main
-
         else:
             print("Can't start video chat -- already started or missing chat id")
 
