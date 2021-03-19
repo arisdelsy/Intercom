@@ -113,13 +113,13 @@ class VideoChat:
     def start(self):
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
-            #need path
+            
             PATH = "/Library/ChromeDriver "
             driver = webdriver.Chrome(PATH)
 
             driver.get('http://meet.jit.si/%s')
             
-            search = driver.find_element_by_CSS("action-btn primary")
+            search = driver.find_element_by_class_name("action-btn primary")
             search.click()
 
             driver.quit()
