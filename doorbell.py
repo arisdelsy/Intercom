@@ -25,7 +25,7 @@ FROM_EMAIL_PASSWORD = '#Asc1058'
 # Email you want to send the update to
 TO_EMAIL = 'steve@arlingtonscale.com'
 
-#XPath = //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div
+XPath = //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div
 
 #############
 # Program
@@ -123,7 +123,7 @@ class VideoChat:
 
             driver.get('http://meet.jit.si/%s')
             
-            search = driver.find_element_by_class_name("action-btn primary")
+            search = driver.find_element_by_xpath(XPath)
             search.click()
 
             driver.quit()
