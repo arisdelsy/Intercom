@@ -35,6 +35,7 @@ import signal
 import subprocess
 import smtplib
 import uuid
+import selenium
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
