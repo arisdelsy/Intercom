@@ -25,6 +25,7 @@ FROM_EMAIL_PASSWORD = '#Asc1058'
 # Email you want to send the update to
 TO_EMAIL = 'steve@arlingtonscale.com'
 
+#XPath = //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div
 
 #############
 # Program
