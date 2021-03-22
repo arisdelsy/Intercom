@@ -121,7 +121,7 @@ class VideoChat:
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
 
-            PATH = "/Library/ChromeDriver "
+            PATH = "/pi/ChromeDriver "
             driver = webdriver.Chrome(PATH)
 
             driver.get('http://meet.jit.si/%s')
