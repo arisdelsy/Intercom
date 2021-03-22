@@ -25,7 +25,7 @@ FROM_EMAIL_PASSWORD = '#Asc1058'
 # Email you want to send the update to
 TO_EMAIL = 'steve@arlingtonscale.com'
 
-XPath = //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div
+#XPath = //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div
 
 #############
 # Program
@@ -41,7 +41,10 @@ import uuid
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-#from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait 
+from selenium.webdriver.support.import expected_conditions as EC
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
@@ -123,10 +126,16 @@ class VideoChat:
 
             driver.get('http://meet.jit.si/%s')
             
-            search = driver.find_element_by_xpath(XPath)
+            search = driver.find_element_by_xpath(//*[@id="lobby-screen"]/div[2]/div[3]/div/div/div)
             search.click()
 
-            driver.quit()
+            try: 
+                element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div))
+                )
+                element.click()
+            except:
+                driver.quit()
         else:
             print("Can't start video chat -- already started or missing chat id")
 
