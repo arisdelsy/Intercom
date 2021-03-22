@@ -126,12 +126,12 @@ class VideoChat:
 
             driver.get('http://meet.jit.si/%s')
             
-            search = driver.find_element_by_xpath(//*[@id="lobby-screen"]/div[2]/div[3]/div/div/div)
+            search = driver.find_element_by_xpath('//*[@id="lobby-screen"]/div[2]/div[3]/div/div/div')
             search.click()
 
             try: 
                 element = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.XPATH, //*[@id="lobby-screen"]/div[2]/div[3]/div/div/div))
+                    EC.presence_of_element_located((By.XPATH, '//*[@id="lobby-screen"]/div[2]/div[3]/div/div/div'))
                 )
                 element.click()
             except:
