@@ -40,7 +40,7 @@ import uuid
 #import selenium
 
 from selenium import webdriver
-#rom webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait 
@@ -121,7 +121,7 @@ class VideoChat:
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
 
-            PATH = "/pi/ChromeDriver "
+            PATH = "/pi/ChromeDriver"
             driver = webdriver.Chrome(PATH)
 
             driver.get('http://meet.jit.si/%s')
