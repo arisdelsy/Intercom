@@ -37,7 +37,7 @@ import signal
 import subprocess
 import smtplib
 import uuid
-#import selenium
+import selenium
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -121,7 +121,7 @@ class VideoChat:
         if not self._process and self.chat_id:
             self._process = subprocess.Popen(["chromium-browser", "-kiosk", self.get_chat_url()])
 
-            PATH = "/pi/ChromeDriver"
+            PATH = "/pi/Desktop/doorbell/ChromeDriver"
             driver = webdriver.Chrome(PATH)
 
             driver.get('http://meet.jit.si/%s')
@@ -129,12 +129,13 @@ class VideoChat:
             search = driver.find_element_by_xpath('//*[@id="lobby-screen"]/div[3]/div[3]/div/div/div')
             search.click()
 
+            
             try: 
-                element = WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.XPATH, '//*[@id="lobby-screen"]/div[3]/div[3]/div/div/div'))
-                )
-                element.click()
-            except:
+                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="lobby-screen"]/div[3]/div[3]/div/div/div')))
+                print("Page is ready!")
+                #element.click()
+            except TimeoutException:
+                print("Loading took too much time.")
                 driver.quit()
         else:
             print("Can't start video chat -- already started or missing chat id")
